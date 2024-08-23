@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learning/chopper_api/service.dart';
-import 'package:learning/design_patterns/factory_method/factory_main.dart';
 import 'package:learning/model/model.dart';
+import 'package:learning/pages/http_fetching.dart';
+import 'package:learning/pages/riverpod_counter_page.dart';
 import 'package:learning/services/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -35,79 +37,34 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Kachra"),
-          elevation: 0,
-          backgroundColor: Colors.grey[300],
-        ),
-        body: Container(
-          // color: Colors.grey[200],
-          padding: const EdgeInsets.all(15),
-          child: loading
-              ? const Center(child: CircularProgressIndicator())
-              : Column(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            ListView.builder(
-                              itemCount: user.length,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                User curr = user[index];
-                                return Column(
-                                  children: [
-                                    ListTile(
-                                      tileColor: curr.gender == 'male'
-                                          ? Colors.blue
-                                          : Colors.pink,
-                                      leading: Image.network(
-                                          curr.picture!.large ?? ''),
-                                      title: Text(
-                                        "Name : ${curr.name!.first} ${curr.name!.last}",
-                                        style: TextStyle(
-                                          color: curr.gender == 'male'
-                                              ? Colors.white
-                                              : Colors.white,
-                                        ),
-                                      ),
-                                      subtitle: Text(
-                                        "Gender : ${curr.gender}",
-                                        style: TextStyle(
-                                          color: curr.gender == 'male'
-                                              ? Colors.white
-                                              : Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
-                            const FactoryMain(),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+    return ProviderScope(
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text("Kachra"),
+            elevation: 0,
+            backgroundColor: Colors.grey[300],
+          ),
+          body: Container(
+            // color: Colors.grey[200],
+            padding: const EdgeInsets.all(15),
+            child: loading
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : const RiverpodCounterPage(),
+            // HttpFetching(
+            //     user: user,
+            //   ),
+          ),
         ),
       ),
     );
   }
 
   Future<void> fetchUsingChopper() async {
-    await Service.create().getPostById(3).then((vlue) {
-      print(vlue);
-    });
+    await Service.create().getPostById(3).then((vlue) {});
   }
 
   Future<void> fetchData() async {
@@ -118,8 +75,6 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       user = response;
     });
-    print(response.length);
-    print(response[0].gender);
     setState(() {
       loading = false;
     });
