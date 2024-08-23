@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learning/design_patterns/factory_method/factory_main.dart';
 import 'package:learning/model/model.dart';
 
 class HttpFetching extends StatelessWidget {
@@ -50,7 +49,6 @@ class HttpFetching extends StatelessWidget {
                     );
                   },
                 ),
-                const FactoryMain(),
               ],
             ),
           ),

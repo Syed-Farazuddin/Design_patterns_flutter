@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learning/chopper_api/service.dart';
 import 'package:learning/model/model.dart';
-import 'package:learning/pages/http_fetching.dart';
+import 'package:learning/pages/api_fetchings/http/http_fetching.dart';
 import 'package:learning/pages/riverpod_counter_page.dart';
-import 'package:learning/services/services.dart';
+import 'package:learning/services/http/http_services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -24,6 +24,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int value = 0;
   bool loading = false;
 
   List<User> user = [];
@@ -47,16 +48,14 @@ class _MyAppState extends State<MyApp> {
             backgroundColor: Colors.grey[300],
           ),
           body: Container(
-            // color: Colors.grey[200],
             padding: const EdgeInsets.all(15),
             child: loading
                 ? const Center(
                     child: CircularProgressIndicator(),
                   )
-                : const RiverpodCounterPage(),
-            // HttpFetching(
-            //     user: user,
-            //   ),
+                : value == 0
+                    ? const RiverpodCounterPage()
+                    : HttpFetching(user: user),
           ),
         ),
       ),
