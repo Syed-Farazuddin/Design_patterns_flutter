@@ -40,6 +40,9 @@ dependencies:
   chopper_generator: ^8.0.1
   build_runner: ^2.4.11
   provider: ^6.1.2
+  firebase_core: ^2.24.2
+  firebase_messaging: ^14.7.10
+  flutter_local_notifications: ^17.2.2
 
 dev_dependencies:
   flutter_test:
