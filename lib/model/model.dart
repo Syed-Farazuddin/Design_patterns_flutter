@@ -10,6 +10,12 @@ class User {
     required this.location,
   });
 
+  @override
+  String toString() {
+    // TODO: implement toString
+    return "User{$gender,$name,$location,$picture,$picture}";
+  }
+
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       gender: json['gender'],
@@ -45,6 +51,10 @@ class Name {
     required this.first,
     required this.last,
   });
+  @override
+  String toString() {
+    return "{Name Title: $title  Firstname: $first Lastname: $last}";
+  }
 }
 
 class Location {

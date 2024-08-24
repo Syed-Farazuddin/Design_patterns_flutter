@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:learning/pages/providers/service/riverpod_fetching_data_service.dart';
 import 'package:learning/state_management/riverpod/counter_riverpod/counter_riverpod.dart';
 
-class RiverpodCounterPage extends StatelessWidget {
+class RiverpodCounterPage extends StatefulWidget {
   const RiverpodCounterPage({super.key});
+
+  @override
+  State<RiverpodCounterPage> createState() => _RiverpodCounterPageState();
+}
+
+class _RiverpodCounterPageState extends State<RiverpodCounterPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

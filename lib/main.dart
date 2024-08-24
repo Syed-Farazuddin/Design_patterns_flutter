@@ -4,6 +4,7 @@ import 'package:learning/chopper_api/service.dart';
 import 'package:learning/model/model.dart';
 import 'package:learning/pages/api_fetchings/http/http_fetching.dart';
 import 'package:learning/pages/providers/riverpod_counter_page.dart';
+import 'package:learning/pages/providers/riverpod_fetching_page.dart';
 import 'package:learning/services/http/http_services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -54,8 +55,10 @@ class _MyAppState extends State<MyApp> {
                     child: CircularProgressIndicator(),
                   )
                 : value == 0
-                    ? const RiverpodCounterPage()
-                    : HttpFetching(user: user),
+                    ? const RiverpodFetchingPage()
+                    : value == 1
+                        ? const RiverpodCounterPage()
+                        : HttpFetching(user: user),
           ),
         ),
       ),
