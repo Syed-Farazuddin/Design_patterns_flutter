@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learning/model/model.dart';
-// import 'package:learning/model/model.dart';
 import 'package:learning/pages/providers/service/riverpod_fetching_data_service.dart';
 
 class RiverpodFetchingPage extends StatelessWidget {
@@ -18,7 +16,13 @@ class RiverpodFetchingPage extends StatelessWidget {
             debugPrint(data.toString());
             return Column(
               children: [
-                const Text("Data Fetched Successfully"),
+                const Text(
+                  "Data Fetched Successfully",
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 Expanded(
                   child: ListView.builder(
                     itemCount: data.length,

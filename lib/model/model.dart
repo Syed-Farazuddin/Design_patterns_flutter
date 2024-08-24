@@ -12,7 +12,6 @@ class User {
 
   @override
   String toString() {
-    // TODO: implement toString
     return "User{$gender,$name,$location,$picture,$picture}";
   }
 
