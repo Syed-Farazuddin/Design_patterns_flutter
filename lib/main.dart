@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learning/chopper_api/service.dart';
 import 'package:learning/model/model.dart';
 import 'package:learning/pages/api_fetchings/http/http_fetching.dart';
-import 'package:learning/pages/riverpod_counter_page.dart';
+import 'package:learning/pages/providers/riverpod_counter_page.dart';
 import 'package:learning/services/http/http_services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
